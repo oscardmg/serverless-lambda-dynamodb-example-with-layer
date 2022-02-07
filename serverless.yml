@@ -1,0 +1,73 @@
+service: nodejs-lambda-dynamodb-example
+
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage,'dev'}
+  region: ${opt:region,'us-east-1'}
+  lambdaHashingVersion: 20201221
+  deploymentBucket:
+    name: pco-app-${self:provider.stage}.${self:provider.region}.deploy-files
+
+  environment:
+    TABLE_NAME:
+      Ref: myTable
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "Fn::GetAtt": [myTable, Arn]
+
+functions:
+  createAnimal:
+    handler: handler.create
+    events:
+      - http:
+          path: /animals
+          method: POST
+
+  getAnimals:
+    handler: handler.list
+    events:
+      - http:
+          path: /animals
+          method: GET
+
+  deleteAnimal:
+    handler: handler.delete
+    events:
+      - http:
+          path: /animals/{name}
+          method: DELETE
+          request:
+            parameters:
+              paths:
+                name: true
+
+resources:
+  Resources:
+    myTable:
+      Type: AWS::DynamoDB::Table
+      #DeletionPolicy: Retain
+      Properties:
+        TableName: AnimalsExample
+        BillingMode: PROVISIONED
+        AttributeDefinitions:
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: name
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

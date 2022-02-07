@@ -1,0 +1,14 @@
+POST https://qfunybupfb.execute-api.us-east-1.amazonaws.com/dev/animals
+Content-Type: application/json
+
+{
+  "name": "Bunny",
+  "age": "2",
+  "family": "Cat"
+}
+
+###
+GET https://qfunybupfb.execute-api.us-east-1.amazonaws.com/dev/animals
+
+###
+DELETE https://qfunybupfb.execute-api.us-east-1.amazonaws.com/dev/animals/Bunny

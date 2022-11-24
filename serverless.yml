@@ -1,15 +1,15 @@
 service: nodejs-lambda-dynamodb-example
 
-frameworkVersion: "2"
+frameworkVersion: "3"
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs16.x
   stage: ${opt:stage,'dev'}
   region: ${opt:region,'us-east-1'}
   lambdaHashingVersion: 20201221
   deploymentBucket:
-    name: pco-app-${self:provider.stage}.${self:provider.region}.deploy-files
+    name: odmg-serverless-deploy
 
   environment:
     TABLE_NAME:

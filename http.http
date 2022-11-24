@@ -1,4 +1,4 @@
-POST https://qfunybupfb.execute-api.us-east-1.amazonaws.com/dev/animals
+POST https://7wp1z6igic.execute-api.us-east-1.amazonaws.com/dev/animals
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ###
-GET https://qfunybupfb.execute-api.us-east-1.amazonaws.com/dev/animals
+GET https://7wp1z6igic.execute-api.us-east-1.amazonaws.com/dev/animals
 
 ###
-DELETE https://qfunybupfb.execute-api.us-east-1.amazonaws.com/dev/animals/Bunny
+DELETE https://7wp1z6igic.execute-api.us-east-1.amazonaws.com/dev/animals/Bunny

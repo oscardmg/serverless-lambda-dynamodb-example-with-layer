@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-lambda-dynamodb-example",
+  "version": "1.0.0",
+  "description": "https://dynobase.dev/dynamodb-serverless-framework/",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscardmg/nodejs-lambda-dynamodb-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscardmg/nodejs-lambda-dynamodb-example/issues"
+  },
+  "homepage": "https://github.com/oscardmg/nodejs-lambda-dynamodb-example#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.1261.0",
+    "serverless": "^3.25.0",
+    "serverless-offline": "^11.5.0"
+  }
+}

@@ -1,0 +1,16 @@
+Resources:
+  myTable:
+    Type: AWS::DynamoDB::Table
+    #DeletionPolicy: Retain
+    Properties:
+      TableName: AnimalsExample
+      BillingMode: PROVISIONED
+      AttributeDefinitions:
+        - AttributeName: name
+          AttributeType: S
+      KeySchema:
+        - AttributeName: name
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

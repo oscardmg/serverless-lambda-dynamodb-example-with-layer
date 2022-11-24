@@ -1,0 +1,31 @@
+createAnimal:
+  handler: src/handler.create
+  #name: ${self:provider.stackName}-create
+  package:
+    patterns:
+      - '!**'
+      - 'src/**'
+  layers:
+    - !Ref MainLambdaLayer
+  events:
+    - http:
+        path: /animals
+        method: POST
+
+getAnimals:
+  handler: src/handler.list
+  events:
+    - http:
+        path: /animals
+        method: GET
+
+deleteAnimal:
+  handler: src/handler.delete
+  events:
+    - http:
+        path: /animals/{name}
+        method: DELETE
+        request:
+          parameters:
+            paths:
+              name: true
